@@ -36,7 +36,7 @@ function App() {
           <PrivateRoute path="/usersComponent/:project">
             <UsersComponent />
           </PrivateRoute>
-          <PrivateRoute path="/adminsComponent">
+          <PrivateRoute path="/adminsComponents">
             <AdminsComponents />
           </PrivateRoute>
           <Route path="*">
