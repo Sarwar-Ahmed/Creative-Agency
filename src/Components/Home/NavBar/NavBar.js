@@ -1,9 +1,12 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
 import './NavBar.css'
 
 const NavBar = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     return (
         <Container fluid style={{backgroundColor: '#FBD062'}}>
             <Container>
@@ -16,7 +19,15 @@ const NavBar = () => {
                             <Link to="/" className=" navLink">Our Portfolio</Link>
                             <Link to="/" className="navLink">Our Team</Link>
                             <Link to="/" className="navLink">Contact Us</Link>
-                            <Link to="/" className="navLink btn btn-dark text-white pr-4 pl-4">Login</Link>
+                            {
+                                loggedInUser.isSiggnedIn && <Link to="/" className="navLink">{loggedInUser.name}</Link>
+                            }
+                            
+                            {
+                                loggedInUser.isSiggnedIn
+                                ?<Link to="/login" onClick={() => setLoggedInUser({})} className="navLink btn btn-dark text-white pr-4 pl-4">Logout</Link>
+                                :<Link to="/login" className="navLink btn btn-dark text-white pr-4 pl-4">Login</Link>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

@@ -18,14 +18,14 @@ const Header = () => {
                     </div>
                 </div>
             </Container>
-            <div fluid style={{ backgroundColor: '#ffffff' }} className="d-flex p-md-5">
+            <Container style={{ backgroundColor: '#ffffff' }} className="d-flex p-md-5">
                 <Link to="" className="btn"><img src="https://iili.io/2ZCiep.png" className="img-fluid w-50" alt="" /></Link>
                 <Link to="" className="btn"><img src="https://iili.io/2ZCsmN.png" className="img-fluid w-50" alt="" /></Link>
                 <Link to="" className="btn"><img src="https://iili.io/2ZnJkl.png" className="img-fluid w-50" alt="" /></Link>
                 <Link to="" className="btn"><img src="https://iili.io/2Zn3IS.png" className="img-fluid w-50" alt="" /></Link>
                 <Link to="" className="btn"><img src="https://iili.io/2ZnqBe.png" className="img-fluid w-50" alt="" /></Link>
 
-            </div>
+            </Container>
         </Container>
     );
 };
