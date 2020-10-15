@@ -25,7 +25,11 @@ const Services = () => {
                             <div className="col-md-4 p-3 pt-5 pb-5 services-card" key={service._id}>
                                 <Link to={`/usersComponent/${service.title}`} style={{color: "#000000"}}>
                                     <div>
-                                        <img src={service.image} className="w-25" alt="" />
+                                        {
+                                            service.image.img
+                                            ?<img src={`data:image/png;base64,${service.image.img}`} className="w-25 img-fluid rounded-circle" alt="" />
+                                            :<img src={service.image} className="w-25 img-fluid rounded-circle" alt="" />
+                                        }
                                     </div>
                                     <h5>{service.title}</h5>
                                     <p><small>{service.description}</small></p>

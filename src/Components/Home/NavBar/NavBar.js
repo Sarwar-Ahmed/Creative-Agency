@@ -28,6 +28,7 @@ const NavBar = () => {
                                 ?<Link to="/login" onClick={() => setLoggedInUser({})} className="navLink btn btn-dark text-white pr-4 pl-4">Logout</Link>
                                 :<Link to="/login" className="navLink btn btn-dark text-white pr-4 pl-4">Login</Link>
                             }
+                            <Link to="/adminsComponents" className="navLink btn btn-dark text-white pr-4 pl-4">Admin</Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

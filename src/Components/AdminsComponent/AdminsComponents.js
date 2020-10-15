@@ -6,15 +6,26 @@ import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
 import './AdminsComponents.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartArrowDown, faCommentDots, faList } from '@fortawesome/free-solid-svg-icons'
+import { faList, faPlus, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import ServiceList from './ServiceList/ServiceList';
 import AddService from './AddService/AddService';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
+import { useEffect } from 'react';
 
 const AdminsComponents = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [active, setActive] = useState("Service list");
+    const [admin, setAdmin] = useState([]);
 
+    useEffect(() => {
+        fetch( `http://localhost:5000/admins`)
+        .then(res => res.json())
+        .then(data => {
+            const currentAdmin = data.find(data => data.email === loggedInUser.email);
+            setAdmin(currentAdmin);
+        })
+    }, [])
+    
     const handleTab = (tabName) => {
         setActive(tabName);
     }
@@ -27,9 +38,9 @@ const AdminsComponents = () => {
                         <Navbar.Toggle />
                         <Navbar.Collapse className="justify-content-end">
                             <Nav className="flex-column">
-                                <Link to="/adminsComponents" onClick={() => handleTab("Service list")} className={active === "Service list" ? "activeTab font-weight-bold  p-2" : "font-weight-bold navLink p-2"}><FontAwesomeIcon icon={faCartArrowDown} /> Service list</Link>
-                                <Link to="/adminsComponents" onClick={() => handleTab("Add Service")} className={active === "Add Service" ? "activeTab font-weight-bold p-2" : "font-weight-bold navLink p-2"}><FontAwesomeIcon icon={faList} /> Add Service</Link>
-                                <Link to="/adminsComponents" onClick={() => handleTab("Make Admin")} className={active === "Make Admin" ? "activeTab font-weight-bold  p-2" : "font-weight-bold navLink p-2"}><FontAwesomeIcon icon={faCommentDots} /> Make Admin</Link>
+                                <Link to="/adminsComponents" onClick={() => handleTab("Service list")} className={active === "Service list" ? "activeTab font-weight-bold  p-2" : "font-weight-bold navLink p-2"}><FontAwesomeIcon icon={faList} /> Service list</Link>
+                                <Link to="/adminsComponents" onClick={() => handleTab("Add Service")} className={active === "Add Service" ? "activeTab font-weight-bold p-2" : "font-weight-bold navLink p-2"}><FontAwesomeIcon icon={faPlus} /> Add Service</Link>
+                                <Link to="/adminsComponents" onClick={() => handleTab("Make Admin")} className={active === "Make Admin" ? "activeTab font-weight-bold  p-2" : "font-weight-bold navLink p-2"}><FontAwesomeIcon icon={faUserPlus} /> Make Admin</Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
@@ -40,17 +51,24 @@ const AdminsComponents = () => {
                         <h3 className="p-3 mr-auto">{active}</h3>
                         <h4 className="p-3">{loggedInUser.name}</h4>
                     </div>
-                    <div style={{ backgroundColor: "#F4F7FC" }} className="p-5">
-                        {
-                            active === "Service list" && <ServiceList />
-                        }
-                        {
-                            active === "Add Service" && <AddService />
-                        }
-                        {
-                            active == "Make Admin" && <MakeAdmin />
-                        }
-                    </div>
+                    {
+                        admin
+                        ?<div style={{ backgroundColor: "#F4F7FC" }} className="p-5">
+                            {
+                                active === "Service list" && <ServiceList />
+                            }
+                            {
+                                active === "Add Service" && <AddService />
+                            }
+                            {
+                                active == "Make Admin" && <MakeAdmin />
+                            }
+                        </div>
+                        :<div style={{ backgroundColor: "#F4F7FC" }} className="p-5">
+                            <h2 className="text-danger">Sorry! You are not an Admin</h2>
+                            <p>Please <Link to="/login">Login</Link> </p>
+                        </div>
+                    }
                 </div>
             </div>
         </Container>

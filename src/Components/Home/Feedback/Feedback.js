@@ -23,11 +23,11 @@ const Feedback = () => {
                         feedback.map(feedback =>
                             <div className="col-md-4 text-left" key={feedback._id}>
                                 <div className="border rounded p-3 pt-3 pb-3 m-1"> 
-                                    <div className="row">
-                                        <div className="col-3">
-                                            <img src={feedback.image} className="w-100 rounded-circle" alt="" />
+                                    <div className="d-flex">
+                                        <div className="w-25 mt-2">
+                                            <img src={feedback.image} className="img-fluid rounded-circle" alt="" />
                                         </div>
-                                        <div className="col-9">
+                                        <div className="w-75 p-2">
                                             <h5 className="font-weight-bold">{feedback.name}</h5>
                                             <h6>{feedback.title}</h6>
                                         </div>

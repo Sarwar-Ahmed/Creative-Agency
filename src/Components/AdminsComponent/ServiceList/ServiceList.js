@@ -36,18 +36,17 @@ const ServiceList = () => {
                                 <td>{service.details}</td>
                                 <td>
                                     <Dropdown as={ButtonGroup}>
-                                        <Button variant="success">Split Button</Button>
+                                        <Button variant="" className="text-danger">Pending</Button>
 
-                                        <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+                                        <Dropdown.Toggle split variant="" id="dropdown-split-basic" />
 
                                         <Dropdown.Menu>
-                                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                            <Dropdown.Item href="#/action-1" className="text-danger">Pending</Dropdown.Item>
+                                            <Dropdown.Item href="#/action-2" className="text-warning">On going</Dropdown.Item>
+                                            <Dropdown.Item href="#/action-3" className="text-success">Done</Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown>
                                 </td>
-                                {/* <td><button onClick={() => deleteEvent(service._id)} className="btn"><img src="https://iili.io/2XG7yb.png" alt="" className="w-50 rounded bg-danger" /></button></td> */}
                             </tr>
                         )
                     }
