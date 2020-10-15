@@ -19,7 +19,7 @@ const Order = () => {
     }
 
     const onSubmit = (data) => {
-        // fetch('http://localhost:5000/addUserOrder', {
+        // fetch('https://creative-agency-by-sarwar.herokuapp.com/addUserOrder', {
         //     method: 'POST',
         //     headers: {
         //         'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ const Order = () => {
         formData.append('price', data.price);
         formData.append('status', "Pending");
 
-        fetch('http://localhost:5000/addOrder', {
+        fetch('https://creative-agency-by-sarwar.herokuapp.com/addOrder', {
             method: 'POST',
             body: formData
         })

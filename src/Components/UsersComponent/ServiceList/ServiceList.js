@@ -9,7 +9,7 @@ const ServiceList = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/userOrder?email=` + loggedInUser.email, {
+        fetch(`https://creative-agency-by-sarwar.herokuapp.com/userOrder?email=` + loggedInUser.email, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ const ServiceList = () => {
                                         service.image.img && <img src={`data:image/png;base64,${service.image.img}`} className="w-25 img-fluid rounded-circle" alt="" />
                                     }
                                 </div>
-                                <button className="btn btn-warning ml-auto">{service.status}</button>
+                                <button className={service.status==="Pending"?"btn btn-danger ml-auto":service.status==="On going"?"btn btn-warning ml-auto":"btn btn-success ml-auto"}>{service.status}</button>
                             </div>
                             <div className="mt-3">
                                 <h5>{service.project}</h5>

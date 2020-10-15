@@ -8,7 +8,7 @@ const Feedback = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/feedback`)
+        fetch(`https://creative-agency-by-sarwar.herokuapp.com/feedback`)
             .then(res => res.json())
             .then(data => {
                 setFeedback(data);

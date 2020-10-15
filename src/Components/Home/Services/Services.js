@@ -9,7 +9,7 @@ const Services = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/services`)
+        fetch(`https://creative-agency-by-sarwar.herokuapp.com/services`)
             .then(res => res.json())
             .then(data => {
                 setServices(data);
@@ -27,7 +27,7 @@ const Services = () => {
                                     <div>
                                         {
                                             service.image.img
-                                            ?<img src={`data:image/png;base64,${service.image.img}`} className="w-25 img-fluid rounded-circle" alt="" />
+                                            ?<img src={`data:image/png;base64,${service.images.img}`} className="w-25 img-fluid rounded-circle" alt="" />
                                             :<img src={service.image} className="w-25 img-fluid rounded-circle" alt="" />
                                         }
                                     </div>

@@ -39,7 +39,7 @@ const UsersComponent = () => {
                 <div className="col-md-10 p-3">
                     <div className="d-flex">
                         <h3 className="p-3 mr-auto">{active}</h3>
-                        <h4 className="p-3">{loggedInUser.name}</h4>
+                        <h4 className="p-3"><span className="p-1"><img src={loggedInUser.photo} className="rounded-circle" style={{width: 32}} alt="" /></span>{loggedInUser.name}</h4>
                     </div>
                     <div style={{ backgroundColor: "#F4F7FC" }} className="p-5">
                         {

@@ -18,7 +18,7 @@ const AdminsComponents = () => {
     const [admin, setAdmin] = useState([]);
 
     useEffect(() => {
-        fetch( `http://localhost:5000/admins`)
+        fetch( `https://creative-agency-by-sarwar.herokuapp.com/admins`)
         .then(res => res.json())
         .then(data => {
             const currentAdmin = data.find(data => data.email === loggedInUser.email);
@@ -49,7 +49,7 @@ const AdminsComponents = () => {
                 <div className="col-md-10 p-3">
                     <div className="d-flex">
                         <h3 className="p-3 mr-auto">{active}</h3>
-                        <h4 className="p-3">{loggedInUser.name}</h4>
+                        <h4 className="p-3"><span className="p-1"><img src={loggedInUser.photo} className="rounded-circle" style={{width: 32}} alt="" /></span>{loggedInUser.name}</h4>
                     </div>
                     {
                         admin
@@ -66,7 +66,7 @@ const AdminsComponents = () => {
                         </div>
                         :<div style={{ backgroundColor: "#F4F7FC" }} className="p-5">
                             <h2 className="text-danger">Sorry! You are not an Admin</h2>
-                            <p>Please <Link to="/login">Login</Link> </p>
+                            <h6>Please <Link to="/login">Login</Link> With Varified Admin Email.</h6>
                         </div>
                     }
                 </div>

@@ -2,12 +2,30 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Button, ButtonGroup, Dropdown, Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const ServiceList = () => {
     const [serviceList, setServiceList] = useState([]);
+    const [status, setStatus] = useState("Pending");
+
+    const handleStatus = (status, id) => {
+        setStatus(status);
+        fetch(`https://creative-agency-by-sarwar.herokuapp.com/updateOrders`,{
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({status, id})
+        })
+        .then(res => res.json())
+        .then(data => {
+            // const selectedOrder = data.find(order => id===order._id);
+            // console.log(selectedOrder);
+            console.log("updated");
+        })
+        alert("Status updated successfully.");
+    }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders`)
+        fetch(`https://creative-agency-by-sarwar.herokuapp.com/orders`)
             .then(res => res.json())
             .then(data => {
                 setServiceList(data);
@@ -36,14 +54,14 @@ const ServiceList = () => {
                                 <td>{service.details}</td>
                                 <td>
                                     <Dropdown as={ButtonGroup}>
-                                        <Button variant="" className="text-danger">Pending</Button>
+                                        <Button variant="" className={service.status==="Pending"? "text-danger": service.status==="On going"? "text-warning":"text-success"}>{service.status}</Button>
 
                                         <Dropdown.Toggle split variant="" id="dropdown-split-basic" />
 
                                         <Dropdown.Menu>
-                                            <Dropdown.Item href="#/action-1" className="text-danger">Pending</Dropdown.Item>
-                                            <Dropdown.Item href="#/action-2" className="text-warning">On going</Dropdown.Item>
-                                            <Dropdown.Item href="#/action-3" className="text-success">Done</Dropdown.Item>
+                                            <Dropdown.Item href="" onClick={() => {handleStatus("Pending", service._id)}}><Link to="/login" className="text-danger">Pending</Link></Dropdown.Item>
+                                            <Dropdown.Item href=""  onClick={() => {handleStatus("On going", service._id)}}><Link to="/login" className="text-warning">On going</Link></Dropdown.Item>
+                                            <Dropdown.Item href=""  onClick={() => {handleStatus("Done", service._id)}}><Link to="/login" className="text-success">Done</Link></Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown>
                                 </td>

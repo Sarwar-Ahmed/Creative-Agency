@@ -13,7 +13,7 @@ const Review = () => {
 
     const onSubmit = (data) => {
         data.image = loggedInUser.photo;
-        fetch('http://localhost:5000/addReview', {
+        fetch('https://creative-agency-by-sarwar.herokuapp.com/addReview', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
