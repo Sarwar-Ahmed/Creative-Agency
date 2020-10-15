@@ -26,9 +26,9 @@ const Services = () => {
                                 <Link to={`/usersComponent/${service.title}`} style={{color: "#000000"}}>
                                     <div>
                                         {
-                                            service.image.img
+                                            service.images.img
                                             ?<img src={`data:image/png;base64,${service.images.img}`} className="w-25 img-fluid rounded-circle" alt="" />
-                                            :<img src={service.image} className="w-25 img-fluid rounded-circle" alt="" />
+                                            :<img src={service.image} className="w-25 img-fluid git rounded-circle" alt="" />
                                         }
                                     </div>
                                     <h5>{service.title}</h5>
