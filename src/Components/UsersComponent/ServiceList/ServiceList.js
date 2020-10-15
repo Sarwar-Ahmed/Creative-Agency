@@ -30,7 +30,7 @@ const ServiceList = () => {
                             <div className="d-flex">
                                 <div>
                                     {
-                                        service.images.img && <img src={`data:image/png;base64,${service.images.img}`} className="w-25 img-fluid rounded-circle" alt="" />
+                                        service.image.img && <img src={`data:image/png;base64,${service.image.img}`} className="w-25 img-fluid rounded-circle" alt="" />
                                     }
                                 </div>
                                 <button className={service.status==="Pending"?"btn btn-danger ml-auto":service.status==="On going"?"btn btn-warning ml-auto":"btn btn-success ml-auto"}>{service.status}</button>

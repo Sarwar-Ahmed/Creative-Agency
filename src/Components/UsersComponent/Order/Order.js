@@ -19,17 +19,8 @@ const Order = () => {
     }
 
     const onSubmit = (data) => {
-        // fetch('https://creative-agency-by-sarwar.herokuapp.com/addUserOrder', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // })
-        // alert("Order Successfully Done");
-        // history.push(`/home`);
         const formData = new FormData()
-        formData.append('image', file);
+        formData.append('file', file);
         formData.append('name', data.name);
         formData.append('email', data.email);
         formData.append('project', data.project);
